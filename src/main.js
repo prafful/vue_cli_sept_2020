@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue"
+import MyRootComponent from "./rootcomponent/app.vue";
 
-Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  el:"#vueapp",
+  render: h=>h(MyRootComponent)
+})
