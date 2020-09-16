@@ -6,6 +6,12 @@
               {{friend.name}}
           </li>
       </ol>
+      <hr>
+      <ol>
+          <li v-for="user in users" v-bind:key="user.id">
+              {{user.name}}
+          </li>
+      </ol>
     </div>
 
 </template>
@@ -14,6 +20,7 @@
 export default {
     data: function(){
         return{
+           users:[],
            friends:[
                 {
                     id:1,
@@ -37,6 +44,17 @@ export default {
                 }
            ]
         }
+    },
+    mounted: function(){
+        this.$http.get('https://jsonplaceholder.typicode.com/users')
+                .then(response =>{
+                    console.log(response)
+                    console.log(response.body)
+                    this.users = response.body
+                })
+                .catch(err => {
+                    console.log(err);
+                })
     }
 }
 </script>
