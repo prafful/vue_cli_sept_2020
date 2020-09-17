@@ -17,12 +17,17 @@
       <hr>
       <h3>Blogs</h3>
       <ol class="blogs">
-          <li class="blogitem" v-for="blog in blogs" v-bind:key="blog.id">
+          <li class="blogitem" v-for="(blog,index) in blogs" v-bind:key="index">
               {{blog.title}}
               <br>
               <span class="blogbody">
                   {{blog.body}}
               </span>
+              <div>
+                  <button>Edit</button>
+                  &nbsp;
+                  <button v-on:click="deleteBlog(blog.id)">Delete</button>
+              </div>
           </li>
       </ol>
     </div>
@@ -59,6 +64,29 @@ export default {
            ]
         }
     },
+    methods:{
+        deleteBlog: function(blogid){
+            console.log("deleteBlog called... " + blogid);
+            this.$http.delete('http://localhost:3000/blogs' + '/' + blogid)
+                        .then(response => {
+                            console.log(response)
+                            this.getBlogs()
+                        })
+                        .catch(err => console.log(err))
+        },
+       getBlogs: function(){
+            //use api created by json-server
+            this.$http.get('http://localhost:3000/blogs')       
+                    .then(response =>{
+                        console.log(response)
+                        console.log(response.body)
+                        this.blogs = response.body
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+        } 
+    },
     mounted: function(){
         this.$http.get('https://jsonplaceholder.typicode.com/users')
                 .then(response =>{
@@ -69,16 +97,9 @@ export default {
                 .catch(err => {
                     console.log(err);
                 })
-         //use api created by json-server
-         this.$http.get('http://localhost:3000/blogs')       
-                .then(response =>{
-                    console.log(response)
-                    console.log(response.body)
-                    this.blogs = response.body
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+          //use api created by json-server
+          this.getBlogs()        
+        
     }
 }
 </script>

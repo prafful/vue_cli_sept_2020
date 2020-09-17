@@ -10,26 +10,18 @@
         <navbar></navbar>
         <hr>
         <router-view></router-view>
-       <!--      
-        <appheader></appheader>
-        <appcontent></appcontent>
-        <appfooter></appfooter> 
-        -->
+       
     </span>
 </template>
 
 <script>
-//import MyHeader from "../components/Header.vue";
-//import MyFooter from "../components/Footer.vue";
-//import MyContent from "../components/Content.vue";
+
 
 import MyNav from "../components/Navigation.vue";
 
 export default{
     components:{
-        /* appheader: MyHeader,
-        appfooter: MyFooter,
-        appcontent: MyContent */
+      
         navbar:MyNav
     },
     name: "MyRootComponent",

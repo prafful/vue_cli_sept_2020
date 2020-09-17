@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "launch": "concurrently --kill-others  \"json-server data-source-json-server/blogs.json\" \"npm run serve\""
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -18,8 +19,10 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
+    "concurrently": "^5.3.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "json-server": "^0.16.1",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
