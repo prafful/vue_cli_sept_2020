@@ -1,6 +1,27 @@
 <template>
 
     <div>
+        <h3>Blogs</h3>
+      <ol class="blogs">
+          <li class="blogitem" v-for="(blog,index) in blogs" v-bind:key="index">
+              {{blog.title}}
+              <br>
+              <span class="blogbody">
+                  {{blog.body}}
+              </span>
+              <div>
+               
+                <router-link v-bind:to="'/editblog/'+blog.id" exact>      
+                    <button>Edit</button>
+                </router-link>
+            
+            
+                  &nbsp;
+                  <button v-on:click="deleteBlog(blog.id)">Delete</button>
+              </div>
+          </li>
+      </ol>
+      <hr>
         <h3>Friends</h3>
       <ol>
           <li v-for="friend in friends" v-bind:key="friend.id">
@@ -15,21 +36,7 @@
           </li>
       </ol>
       <hr>
-      <h3>Blogs</h3>
-      <ol class="blogs">
-          <li class="blogitem" v-for="(blog,index) in blogs" v-bind:key="index">
-              {{blog.title}}
-              <br>
-              <span class="blogbody">
-                  {{blog.body}}
-              </span>
-              <div>
-                  <button>Edit</button>
-                  &nbsp;
-                  <button v-on:click="deleteBlog(blog.id)">Delete</button>
-              </div>
-          </li>
-      </ol>
+      
     </div>
 
 </template>

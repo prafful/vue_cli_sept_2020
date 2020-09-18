@@ -2,6 +2,7 @@
 import Home from "../components/Home.vue";
 import AddBlog from "../components/AddBlog.vue";
 import ShowBlog from "../components/ShowBlog.vue";
+import EditBlog from "../components/EditBlog.vue";
 
 
 export default [
@@ -16,5 +17,9 @@ export default [
     {
         path:'/showblog',
         component:ShowBlog
+    },
+    {
+        path:'/editblog/:blogid',
+        component: EditBlog
     }
 ]
